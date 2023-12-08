@@ -10,32 +10,28 @@ import MailIcon from "@material-ui/icons/Mail";
 import { IconButton } from "@material-ui/core";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-const CustomDrawer = ({ open, handleDrawerClose, theme }) => {
+import { useStyles } from "./custom_drawer.styles";
+
+const CustomDrawer = ({ theme, ...props }) => {
+  const classes = useStyles();
   return (
-    <Drawer variant="persistent" anchor="left" open={open}>
-      <div>
-        <IconButton onClick={handleDrawerClose}>
+    <Drawer
+      className={classes.drawer}
+      variant={props.variant}
+      anchor={props.anchor}
+      open={props.open}
+      classes={{
+        paper: classes.drawerPaper,
+      }}
+    >
+      <div className={classes.toolbar}>
+        <IconButton onClick={() => props.handleDrawerClose()}>
           {theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
         </IconButton>
       </div>
+      <Divider /> <List>List 1</List>
       <Divider />
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      <List>list 2</List>
     </Drawer>
   );
 };

@@ -1,17 +1,41 @@
-import React, { useState } from "react";
+// import { useState } from "react";
+
+// const useDrawer = () => {
+//   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+//   const [isExpanded, setIsExpanded] = useState(false); // Agrega el estado de expansión
+
+//   const handleDrawerOpen = () => {
+//     setIsDrawerOpen(true);
+//   };
+
+//   const handleDrawerClose = () => {
+//     setIsDrawerOpen(false);
+//   };
+
+//   const toggleExpanded = () => {
+//     setIsExpanded(!isExpanded);
+//   };
+
+//   return { isDrawerOpen, isExpanded, handleDrawerOpen, handleDrawerClose, toggleExpanded };
+// };
+
+// export default useDrawer;
+
+//hook
+import { useState } from "react";
 
 const useDrawer = () => {
-  const [open, setOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const handleDrawerOpen = () => {
-    setOpen(true);
+    setIsDrawerOpen(true);
   };
 
   const handleDrawerClose = () => {
-    setOpen(false);
+    setIsDrawerOpen(false);
   };
 
-  return { open, handleDrawerOpen, handleDrawerClose };
+  return [isDrawerOpen, handleDrawerOpen, handleDrawerClose];
 };
 
 export default useDrawer;
