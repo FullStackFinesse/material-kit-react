@@ -1,37 +1,32 @@
-import React, { useState } from "react";
-import { useTheme } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import { useStyles } from "./dashboard_layout.styles";
-import CustomAppBar from "../../components/custom/CustomAppBar";
-import CustomDrawer from "../../components/custom/CustomDrawer";
-import useDrawer from "../../hooks/useDrawer";
+import React from "react";
 
-const App = () => {
+import { useTheme } from "@material-ui/core/styles";
+
+import Typography from "@material-ui/core/Typography";
+import CustomAppBar from "../../components/custom/CustomAppBar";
+
+import { useStyles } from "./dashboard_layout.styles";
+import useDrawer from "../../hooks/useDrawer";
+import CustomDrawer from "../../components/custom/CustomDrawer";
+const DasboardLayout = () => {
   const classes = useStyles();
   const theme = useTheme();
-
   const [isDrawerOpen, handleDrawerOpen, handleDrawerClose] = useDrawer();
   return (
     <div className={classes.root}>
       <CustomAppBar
         open={isDrawerOpen}
         handleDrawerOpen={handleDrawerOpen}
-        handleDrawerClose={handleDrawerOpen}
+        handleDrawerClose={handleDrawerClose}
       />
       <CustomDrawer
-        open={isDrawerOpen}
-        handleDrawerOpen={handleDrawerOpen}
+        open={!isDrawerOpen}
+        variant="permanent"
         handleDrawerClose={handleDrawerClose}
-        anchor="left"
-        variant="persistent"
         theme={theme}
       />
-      <main
-        className={`${isDrawerOpen ? classes.contentShift : classes.content}`}
-        // className={clsx(classes.content, {
-        //   [classes.contentShift]: open,
-        // })}
-      >
+
+      <main className={classes.content}>
         <div className={classes.toolbar} />
         <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -60,4 +55,4 @@ const App = () => {
     </div>
   );
 };
-export default App;
+export default DasboardLayout;

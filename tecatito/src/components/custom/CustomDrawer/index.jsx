@@ -16,22 +16,37 @@ const CustomDrawer = ({ theme, ...props }) => {
   const classes = useStyles();
   return (
     <Drawer
-      className={classes.drawer}
-      variant={props.variant}
-      anchor={props.anchor}
-      open={props.open}
+      variant={props.variant ? props.variant : "temporary"}
+      className={`${!props.open ? classes.drawerOpen : classes.drawer} ${
+        props.open ? classes.drawerClose : classes.drawer
+      }`}
       classes={{
-        paper: classes.drawerPaper,
+        paper: `${classes.drawer} ${props.open ? classes.drawerClose : classes.drawerOpen}`,
       }}
     >
       <div className={classes.toolbar}>
         <IconButton onClick={() => props.handleDrawerClose()}>
-          {theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          {theme.direction === "rtl" ? <ChevronRightIcon /> : <ChevronLeftIcon />}
         </IconButton>
       </div>
-      <Divider /> <List>List 1</List>
       <Divider />
-      <List>list 2</List>
+      <List>
+        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {["All mail", "Trash", "Spam"].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
     </Drawer>
   );
 };
