@@ -16,13 +16,15 @@ const CustomDrawer = ({ theme, ...props }) => {
   const classes = useStyles();
   return (
     <Drawer
-      variant={props.variant ? props.variant : "temporary"}
+      variant={props.variant}
       className={`${!props.open ? classes.drawerOpen : classes.drawer} ${
         props.open ? classes.drawerClose : classes.drawer
       }`}
       classes={{
         paper: `${classes.drawer} ${props.open ? classes.drawerClose : classes.drawerOpen}`,
       }}
+      // open={props.open}
+      onClose={props.handleDrawerClose ? props.handleDrawerClose : null}
     >
       <div className={classes.toolbar}>
         <IconButton onClick={() => props.handleDrawerClose()}>

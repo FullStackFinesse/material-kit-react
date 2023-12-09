@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useTheme } from "@material-ui/core/styles";
-
+import Hidden from "@material-ui/core/Hidden";
 import Typography from "@material-ui/core/Typography";
 import CustomAppBar from "../../components/custom/CustomAppBar";
 
@@ -11,21 +11,33 @@ import CustomDrawer from "../../components/custom/CustomDrawer";
 const DasboardLayout = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const [isDrawerOpen, handleDrawerOpen, handleDrawerClose] = useDrawer();
+  const { isMobileOpen, isExpanded, handleDrawerToggle, toggleExpanded } = useDrawer();
   return (
     <div className={classes.root}>
       <CustomAppBar
-        open={isDrawerOpen}
-        handleDrawerOpen={handleDrawerOpen}
-        handleDrawerClose={handleDrawerClose}
+        open={isExpanded}
+        position="left"
+        toggleExpanded={toggleExpanded}
+        handleDrawerClose={toggleExpanded}
       />
-      <CustomDrawer
-        open={!isDrawerOpen}
-        variant="permanent"
-        handleDrawerClose={handleDrawerClose}
-        theme={theme}
-      />
-
+      <Hidden smDown>
+        <CustomDrawer
+          open={!isExpanded}
+          variant="permanent"
+          handleDrawerToggle={handleDrawerToggle}
+          handleDrawerClose={toggleExpanded}
+          theme={theme}
+        />
+      </Hidden>{" "}
+      <Hidden smUp>
+        <CustomDrawer
+          open={isMobileOpen}
+          variant="temporary"
+          handleDrawerToggle={handleDrawerToggle}
+          handleDrawerClose={handleDrawerToggle}
+          theme={theme}
+        />
+      </Hidden>
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Typography paragraph>

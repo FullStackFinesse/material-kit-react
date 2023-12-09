@@ -9,20 +9,18 @@ const CustomAppBar = ({ ...props }) => {
   const classes = useStyles();
 
   return (
-    <AppBar position="fixed" className={`${props.open ? classes.appBarShift : classes.appBar}`}>
+    <AppBar className={`${props.open ? classes.appBarShift : classes.appBar} ${props.appBar}`}>
       <Toolbar>
         <IconButton
           color="inherit"
           aria-label="open drawer"
-          onClick={() => props.handleDrawerOpen()}
+          onClick={() => props.toggleExpanded()}
           edge="start"
-          className={`${props.open ? classes.hide : classes.menuButton}`}
+          className={`${props.open ? classes.extendButtonHidden : classes.extendButton}`}
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" noWrap>
-          Persistent drawer
-        </Typography>
+        <Typography variant="h6">Persistent drawer</Typography>
       </Toolbar>
     </AppBar>
   );
