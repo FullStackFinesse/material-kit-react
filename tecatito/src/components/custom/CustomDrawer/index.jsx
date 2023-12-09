@@ -11,9 +11,11 @@ import { IconButton } from "@material-ui/core";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { useStyles } from "./custom_drawer.styles";
+import { CollapsibleList, DropdownList, SimpleList } from "../../ReusableComponents";
 
-const CustomDrawer = ({ theme, ...props }) => {
+const CustomDrawer = ({ theme, routes, navigateTo, ...props }) => {
   const classes = useStyles();
+
   return (
     <Drawer
       variant={props.variant}
@@ -26,6 +28,9 @@ const CustomDrawer = ({ theme, ...props }) => {
       }}
       ModalProps={{
         keepMounted: true,
+        BackdropProps: {
+          invisible: true,
+        },
       }}
       open={props.open}
       onClose={props.handleDrawerClose ? props.handleDrawerClose : null}
@@ -36,14 +41,9 @@ const CustomDrawer = ({ theme, ...props }) => {
         </IconButton>
       </div>
       <Divider />
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      <SimpleList items={routes} navigateTo={navigateTo} />
+      <CollapsibleList items={routes} navigateTo={navigateTo} />
+      <DropdownList items={routes[0].collapse[0].collapse} navigateTo={navigateTo} />
       <Divider />
       <List>
         {["All mail", "Trash", "Spam"].map((text, index) => (
