@@ -11,25 +11,28 @@ import CustomDrawer from "../../components/custom/CustomDrawer";
 const DasboardLayout = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const { isMobileOpen, isExpanded, handleDrawerToggle, toggleExpanded } = useDrawer();
+  const { isMobileOpen, isExpanded, handleDrawerToggle } = useDrawer();
   return (
     <div className={classes.root}>
       <CustomAppBar
         open={isExpanded}
         position="left"
-        toggleExpanded={toggleExpanded}
-        handleDrawerClose={toggleExpanded}
+        handleDrawerClose={handleDrawerToggle}
+        handleDrawerToggle={handleDrawerToggle}
       />
+
       <Hidden smDown>
         <CustomDrawer
+          anchor="left"
           open={!isExpanded}
           variant="permanent"
           handleDrawerToggle={handleDrawerToggle}
-          handleDrawerClose={toggleExpanded}
+          handleDrawerClose={handleDrawerToggle}
           theme={theme}
         />
-      </Hidden>{" "}
-      <Hidden smUp>
+      </Hidden>
+
+      <Hidden mdUp>
         <CustomDrawer
           open={isMobileOpen}
           variant="temporary"

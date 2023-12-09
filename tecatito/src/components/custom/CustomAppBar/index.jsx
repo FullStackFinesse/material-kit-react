@@ -14,9 +14,13 @@ const CustomAppBar = ({ ...props }) => {
         <IconButton
           color="inherit"
           aria-label="open drawer"
-          onClick={() => props.toggleExpanded()}
+          onClick={() => {
+            props.handleDrawerToggle(); // Asegúrate de que handleDrawerToggle es la función correcta
+          }}
           edge="start"
-          className={`${props.open ? classes.extendButtonHidden : classes.extendButton}`}
+          className={`${props.open ? classes.extendButtonHidden : classes.menuButton}
+         
+          `}
         >
           <MenuIcon />
         </IconButton>

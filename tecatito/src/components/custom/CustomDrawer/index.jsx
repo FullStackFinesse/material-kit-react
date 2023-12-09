@@ -17,13 +17,17 @@ const CustomDrawer = ({ theme, ...props }) => {
   return (
     <Drawer
       variant={props.variant}
+      anchor={props.anchor}
       className={`${!props.open ? classes.drawerOpen : classes.drawer} ${
         props.open ? classes.drawerClose : classes.drawer
       }`}
       classes={{
         paper: `${classes.drawer} ${props.open ? classes.drawerClose : classes.drawerOpen}`,
       }}
-      // open={props.open}
+      ModalProps={{
+        keepMounted: true,
+      }}
+      open={props.open}
       onClose={props.handleDrawerClose ? props.handleDrawerClose : null}
     >
       <div className={classes.toolbar}>
