@@ -6,6 +6,7 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
   },
   appBar: {
+    backgroundColor: "#42623B",
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
@@ -13,6 +14,7 @@ export const useStyles = makeStyles((theme) => ({
     }),
   },
   appBarShift: {
+    backgroundColor: "#42623B",
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
@@ -23,26 +25,9 @@ export const useStyles = makeStyles((theme) => ({
       width: `100%`,
     },
   },
-  // appbar: ({ position }) => ({
-  //   position: "fixed",
-  //   [theme.breakpoints.up("md")]: {
-  //     width: `calc(100% - ${position === "left" ? s : 0}px)`,
-  //     marginLeft: position === "left" ? 240 : 0,
-  //   },
-  //   zIndex: theme.zIndex.drawer + 1,
-  // }),
-  // appBarShift: {
-  //   position: "fixed",
-  //   [theme.breakpoints.up("md")]: {
-  //     zIndex: theme.zIndex.drawer + 2,
-  //     transition: theme.transitions.create(["width", "margin"], {
-  //       easing: theme.transitions.easing.sharp,
-  //       duration: theme.transitions.duration.leavingScreen,
-  //     }),
-  //   },
-  // },
 
   menuButton: ({ position }) => ({
+    display: "flex",
     marginRight: position === "left" ? theme.spacing(1) : 0,
     marginLeft: position === "right" ? "right" : 0,
     backgroundColor: theme.palette.primary.main,
@@ -54,31 +39,38 @@ export const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.secondary.light,
     },
   }),
-  extendButton: {
-    marginRight: 25,
-    backgroundColor: "yellow",
-    width: 35,
-    height: 35,
-    color: "black",
-    border: "1px solid red",
-  },
+
   extendButtonHidden: {
     [theme.breakpoints.up("md")]: {
       display: "none",
     },
   },
 
-
   toolbar: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "flex-end",
-    padding: theme.spacing(0, 1),
+
+    padding: theme.spacing(0, 3),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
   },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+  },
+  avatar: {
+    cursor: "pointer",
+    width: theme.spacing(25),
+    height: theme.spacing(9),
+    borderRadius: 0,
+
+    border: "1px solid red",
+    [theme.breakpoints.down("md")]: {
+      width: theme.spacing(20),
+
+      borderRadius: 0,
+
+      //  border: '1px solid blue',
+    },
   },
 }));

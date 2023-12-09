@@ -3,13 +3,13 @@ import React, { useState, useEffect } from "react";
 import { useTheme } from "@material-ui/core/styles";
 import Hidden from "@material-ui/core/Hidden";
 import CustomAppBar from "../../components/custom/CustomAppBar";
-import { useStyles } from "./dashboard_layout.styles";
+import { useStyles } from "./page_landing_layout.styles";
 import useDrawer from "../../hooks/useDrawer";
 import CustomDrawer from "../../components/custom/CustomDrawer";
 import { useLocation, useNavigate } from "react-router-dom";
 import useMedia from "../../hooks/useMedia";
 
-const DasboardLayout = ({ routes, children }) => {
+const PageLandingLayout = ({ routes, children }) => {
   const classes = useStyles();
   const theme = useTheme();
   const location = useLocation();
@@ -41,19 +41,25 @@ const DasboardLayout = ({ routes, children }) => {
   return (
     <div className={classes.root}>
       <CustomAppBar
-        open={isExpanded}
-        position="left"
+        open={!isExpanded}
+        position="right"
+        appBar={classes.appBar}
+        toolbar={classes.toolbar}
         handleDrawerClose={handleDrawerToggle}
         handleDrawerToggle={handleDrawerToggle}
-        isPrivate={true}
+        isPublic={true}
+        theme={theme}
+        isDesktop={isDesktop}
+        routes={routes}
+        navigateTo={handleNavigate}
       />
 
-      <Hidden smDown>
+      <Hidden xlDown>
         <CustomDrawer
           anchor="left"
-          open={!isExpanded}
+          open={false}
           variant="permanent"
-          handleDrawerToggle={handleDrawerToggle}
+          handleDrawerToggle={false}
           handleDrawerClose={handleDrawerToggle}
           theme={theme}
           routes={routes}
@@ -61,17 +67,17 @@ const DasboardLayout = ({ routes, children }) => {
         />
       </Hidden>
 
-      <Hidden mdUp>
-        <CustomDrawer
-          open={isMobileOpen}
-          variant="temporary"
-          handleDrawerToggle={handleDrawerToggle}
-          handleDrawerClose={handleDrawerToggle}
-          theme={theme}
-          routes={routes}
-          navigateTo={handleNavigate}
-        />
-      </Hidden>
+      <CustomDrawer
+        open={isMobileOpen}
+        anchor="right"
+        variant="temporary"
+        handleDrawerToggle={handleDrawerToggle}
+        handleDrawerClose={handleDrawerToggle}
+        theme={theme}
+        routes={routes}
+        navigateTo={handleNavigate}
+      />
+
       <main className={classes.content}>
         <div className={classes.toolbar} />
         {selectedRoute}
@@ -80,4 +86,4 @@ const DasboardLayout = ({ routes, children }) => {
   );
 };
 
-export default DasboardLayout;
+export default PageLandingLayout;
