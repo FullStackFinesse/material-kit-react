@@ -7,15 +7,14 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
-import { IconButton } from "@material-ui/core";
+import { IconButton, Typography } from "@material-ui/core";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { useStyles } from "./custom_drawer.styles";
-import { CollapsibleList, DropdownList, SimpleList } from "../../ReusableComponents";
-
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 const CustomDrawer = ({ theme, routes, navigateTo, ...props }) => {
   const classes = useStyles();
-
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   return (
     <Drawer
       variant={props.variant}
@@ -41,18 +40,32 @@ const CustomDrawer = ({ theme, routes, navigateTo, ...props }) => {
         </IconButton>
       </div>
       <Divider />
-      <SimpleList items={routes} navigateTo={navigateTo} />
-      <CollapsibleList items={routes} navigateTo={navigateTo} />
-      <DropdownList items={routes[0].collapse[0].collapse} navigateTo={navigateTo} />
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
+      {routes.map((route, index) => (
+        <List key={index}>
+          <ListItem
+            button
+            onClick={() => navigateTo(route.path)}
+            style={{ textDecoration: "none", padding: 6 }}
+          >
+            <ListItemIcon
+              style={{
+                justifyContent: "center",
+                flexDirection: "column",
+                alignItems: "center",
+                marginRight: "10px",
+              }}
+            >
+              {route.icon}
+
+              {isDesktop && props.open && <Typography variant="caption">{route.name}</Typography>}
+            </ListItemIcon>
+            <ListItemText primary={route.name} />
           </ListItem>
-        ))}
-      </List>
+        </List>
+      ))}
+
+      <Divider />
+      <List>sdad</List>
     </Drawer>
   );
 };

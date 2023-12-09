@@ -1,14 +1,13 @@
 // App.jsx
 import React from "react";
-import DashboardLayout from "./layouts/DashboardLayout";
-import { publicNavigation } from "./utils/routes/navigationData";
+
 import { BrowserRouter as Router } from "react-router-dom";
+import PrivateRoutes from "./routes/privateRoutes";
 
 function App() {
   return (
     <Router>
-      <DashboardLayout publicNavigation={publicNavigation} />{" "}
-      {/* Pasa publicNavigation como prop */}
+      <PrivateRoutes />
     </Router>
   );
 }
