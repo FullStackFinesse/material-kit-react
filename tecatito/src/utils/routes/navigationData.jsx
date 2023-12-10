@@ -1,59 +1,63 @@
 // Pages
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import ViewDayIcon from "@material-ui/icons/ViewDay";
-import HomeIcon from "@material-ui/icons/Home";
-import WorkIcon from "@material-ui/icons/Work";
-import AboutUs from "../../pages/LandingPages/AboutUs";
-import ContactUs from "../../pages/LandingPages/ContactUs";
-import SignIn from "../../pages/LandingPages/SignIn";
-import Catalogo from "../../pages/LandingPages/Catalogo";
-import Main from "../../pages/Dashboard/Main";
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import ViewDayIcon from '@material-ui/icons/ViewDay';
+import HomeIcon from '@material-ui/icons/Home';
+import WorkIcon from '@material-ui/icons/Work';
+import AboutUs from '../../pages/LandingPages/AboutUs';
+import ContactUs from '../../pages/LandingPages/ContactUs';
+import SignIn from '../../pages/LandingPages/SignIn';
+import Catalogo from '../../pages/LandingPages/Catalogo';
+import Main from '../../pages/Dashboard/Main';
+import Administrator from '../../pages/Dashboard/users/Administrator';
+import Technician from '../../pages/Dashboard/users/Technician';
+import Producer from '../../pages/Dashboard/users/Producer';
+import External from '../../pages/Dashboard/users/External';
 
 export const publicNavigation = [
   {
-    name: "Home",
+    name: 'Home',
     icon: <DashboardIcon />,
-    path: "/catalogo",
+    path: '/catalogo',
     exact: true,
     component: <Catalogo />,
   },
   {
-    name: "Nosotros",
+    name: 'Nosotros',
     icon: <HomeIcon />,
-    path: "/about-us",
+    path: '/about-us',
     exact: true,
     component: <AboutUs />,
   },
   {
-    name: "Contacto",
+    name: 'Contacto',
     icon: <ViewDayIcon />,
-    path: "/contact-us",
+    path: '/contact-us',
     exact: true,
     component: <ContactUs />,
   },
   {
-    name: "Login",
+    name: 'Login',
     icon: <WorkIcon />,
-    path: "/login",
+    path: '/login',
     exact: true,
     component: <SignIn />,
   },
   {
-    name: "Collapse",
+    name: 'Collapse',
     icon: <WorkIcon />,
     subRoutes: [
       {
-        name: "Subruta",
+        name: 'Subruta',
         icon: <WorkIcon />,
-        path: "/login",
+        path: '/login',
         exact: true,
 
         component: <SignIn />,
       },
       {
-        name: "Subruta",
+        name: 'Subruta',
         icon: <WorkIcon />,
-        path: "/contact-us",
+        path: '/contact-us',
         exact: true,
         component: <ContactUs />,
       },
@@ -63,51 +67,59 @@ export const publicNavigation = [
 
 export const privateNavigation = [
   {
-    name: "Principal",
+    name: 'Principal',
     icon: <DashboardIcon />,
-    path: "/main",
+    path: '/main',
     exact: true,
     component: <Main />,
   },
   {
-    name: "permisos",
+    name: 'Administrador',
     icon: <HomeIcon />,
-    path: "/about-us",
+    path: '/admin',
     exact: true,
-    component: <AboutUs />,
+    component: <Administrator />,
   },
   {
-    name: "roles",
+    name: 'Técnico',
     icon: <ViewDayIcon />,
-    path: "/contact-us",
+    path: '/technician',
     exact: true,
-    component: <ContactUs />,
+    component: <Technician />,
   },
   {
-    name: "recarito",
+    name: 'Productor',
     icon: <WorkIcon />,
-    path: "/login",
+    path: '/producer',
     exact: true,
-    component: <SignIn />,
+    component: <Producer />,
   },
   {
-    name: "Collapse",
+    name: 'Externo',
+    icon: <WorkIcon />,
+    path: '/externo',
+    exact: true,
+    component: <External />,
+  },
+
+  {
+    name: 'Collapse',
     icon: <WorkIcon />,
     subRoutes: [
       {
-        name: "Subruta",
+        name: 'Subruta',
         icon: <WorkIcon />,
-        path: "/login",
+        path: '/externo',
         exact: true,
 
-        component: <SignIn />,
+        component: <External />,
       },
       {
-        name: "Subruta",
+        name: 'Subruta',
         icon: <WorkIcon />,
-        path: "/contact-us",
+        path: '/admin',
         exact: true,
-        component: <ContactUs />,
+        component: <Administrator />,
       },
     ],
   },

@@ -1,48 +1,26 @@
 // DashboardLayout.js
-import React, { useState, useEffect } from "react";
-import { useTheme } from "@material-ui/core/styles";
-import Hidden from "@material-ui/core/Hidden";
-import CustomAppBar from "../../components/custom/CustomAppBar";
-import { useStyles } from "./dashboard_layout.styles";
-import useDrawer from "../../hooks/useDrawer";
-import CustomDrawer from "../../components/custom/CustomDrawer";
-import { useLocation, useNavigate } from "react-router-dom";
-import useMedia from "../../hooks/useMedia";
+import React from 'react';
+import { useTheme } from '@material-ui/core/styles';
+import Hidden from '@material-ui/core/Hidden';
+import CustomAppBar from '../../components/custom/CustomAppBar';
+import { useStyles } from './dashboard_layout.styles';
+import useDrawer from '../../hooks/useDrawer';
+import CustomDrawer from '../../components/custom/CustomDrawer';
+import useRouteHandler from '../../hooks/useRouteHandler';
 
-const DasboardLayout = ({ routes, children }) => {
+const DasboardLayout = ({ routes }) => {
   const classes = useStyles();
   const theme = useTheme();
-  const location = useLocation();
-  const navigate = useNavigate();
+
   const { isMobileOpen, isExpanded, handleDrawerToggle } = useDrawer();
-  const isDesktop = useMedia("(min-width: 960px)"); // Utiliza el hook useMedia
 
-  const [selectedRoute, setSelectedRoute] = useState(null);
-
-  useEffect(() => {
-    // Setear la ruta inicial al cargar la página
-    const initialRoute = routes.find((route) => route.path === location.pathname);
-    setSelectedRoute(initialRoute ? initialRoute.component : null);
-  }, [location.pathname, routes]);
-
-  const handleNavigate = (path) => {
-    const selected = routes.find((route) => route.path === path);
-    setSelectedRoute(selected ? selected.component : null);
-
-    // Cerrar el drawer más rápidamente si estamos en un dispositivo de escritorio
-    if (isDesktop && isExpanded) {
-      handleDrawerToggle();
-    }
-
-    // Navegar a la nueva ruta
-    navigate(path);
-  };
+  const { selectedRoute, handleNavigate } = useRouteHandler(routes);
 
   return (
     <div className={classes.root}>
       <CustomAppBar
         open={isExpanded}
-        position="left"
+        position='left'
         handleDrawerClose={handleDrawerToggle}
         handleDrawerToggle={handleDrawerToggle}
         isPrivate={true}
@@ -50,9 +28,9 @@ const DasboardLayout = ({ routes, children }) => {
 
       <Hidden smDown>
         <CustomDrawer
-          anchor="left"
+          anchor='left'
           open={!isExpanded}
-          variant="permanent"
+          variant='permanent'
           handleDrawerToggle={handleDrawerToggle}
           handleDrawerClose={handleDrawerToggle}
           theme={theme}
@@ -64,7 +42,7 @@ const DasboardLayout = ({ routes, children }) => {
       <Hidden mdUp>
         <CustomDrawer
           open={isMobileOpen}
-          variant="temporary"
+          variant='temporary'
           handleDrawerToggle={handleDrawerToggle}
           handleDrawerClose={handleDrawerToggle}
           theme={theme}
