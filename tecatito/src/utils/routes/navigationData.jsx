@@ -43,7 +43,7 @@ export const publicNavigation = [
     component: <SignIn />,
   },
   {
-    name: 'PADRE',
+    name: 'Collapse',
     icon: <WorkIcon />,
     subRoutes: [
       {

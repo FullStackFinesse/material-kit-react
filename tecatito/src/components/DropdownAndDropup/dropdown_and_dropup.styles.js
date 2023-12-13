@@ -4,11 +4,14 @@ export const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
-  button: {
+  dropUnIcon: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  typography: {
     fontWeight: 'bold',
     textTransform: 'none',
-    color: 'black',
-    backgroundColor: 'yellow',
+    color: 'white',
     border: '2px solid #000',
   },
   iconButton: {

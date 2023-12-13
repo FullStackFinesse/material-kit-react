@@ -1,19 +1,28 @@
 // DropdownAndDropup.js
 import React, { useState } from 'react';
-import { Menu, MenuItem, Button, IconButton } from '@material-ui/core';
+import {
+  Menu,
+  MenuItem,
+  Button,
+  IconButton,
+  Typography,
+  Box,
+} from '@material-ui/core';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import { useStyles } from './dropdown_and_dropup.styles';
 
 const DropdownAndDropup = ({ title, options, customStyles, className }) => {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(false);
 
   const handleMouseEnter = (event) => {
     setAnchorEl(event.currentTarget);
+    console.log(event.currentTarget);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
+    console.log(anchorEl);
   };
 
   return (
@@ -22,8 +31,8 @@ const DropdownAndDropup = ({ title, options, customStyles, className }) => {
       onMouseLeave={handleClose}
       className={`${classes.root} ${className}`}
     >
-      <Button className={classes.button}>
-        {title} {/* Mostrar el título en el botón */}
+      <Box className={classes.dropUnIcon}>
+        <Typography className={classes.typography}>{title} </Typography>
         <ArrowDropUpIcon
           aria-haspopup='true'
           onClick={handleMouseEnter}
@@ -32,12 +41,13 @@ const DropdownAndDropup = ({ title, options, customStyles, className }) => {
             anchorEl ? classes.rotatedIcon : ''
           }`}
         />
-      </Button>
+      </Box>
+
       <Menu
         anchorEl={anchorEl}
-        keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
+        onMouseLeave={handleClose}
         getContentAnchorEl={null}
         anchorOrigin={{
           vertical: 'bottom',

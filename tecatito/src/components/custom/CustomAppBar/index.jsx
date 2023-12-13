@@ -15,16 +15,18 @@ const CustomAppBar = ({ isPrivate, isPublic, routes, position, ...props }) => {
 
   const renderRoutes = (routes) => {
     return routes.map((route, key) => (
-      <React.Fragment key={key}>
+      <Grid key={key}>
         {route.subRoutes ? (
           // Renderizar el DropdownAndDropup solo si hay subrutas
           <DropdownAndDropup
             title={route.name}
             options={renderRoutes(route.subRoutes)}
+            className={classes.itemLink}
           />
         ) : (
           // Renderizar solo la ruta si no hay subrutas
           <Typography
+            component='button'
             onClick={() => navigate(route.path)}
             key={key}
             variant='body1'
@@ -32,7 +34,7 @@ const CustomAppBar = ({ isPrivate, isPublic, routes, position, ...props }) => {
             {route.name}
           </Typography>
         )}
-      </React.Fragment>
+      </Grid>
     ));
   };
 
@@ -51,12 +53,13 @@ const CustomAppBar = ({ isPrivate, isPublic, routes, position, ...props }) => {
           >
             <Typography variant='h6'>Logo Privaasdsdte</Typography>
             <Hidden smDown>
-              <Grid>
+              <Grid className={classes.navLink}>
                 <Grid
                   container
                   justifyContent='center'
                   alignItems='center'
                   flexDirection='row'
+                  backgroundColor=''
                   border={2}
                   item
                 >
