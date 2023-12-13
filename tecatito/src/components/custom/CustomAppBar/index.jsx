@@ -6,10 +6,36 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { useStyles } from './custom_appbar.styles';
 import { useNavigate } from 'react-router-dom';
-import { Grid, Hidden, Box, Button } from '@material-ui/core';
+import { Grid, Hidden, Box } from '@material-ui/core';
+import DropdownAndDropup from '../../DropdownAndDropup';
+
 const CustomAppBar = ({ isPrivate, isPublic, routes, position, ...props }) => {
   const classes = useStyles({ position });
   const navigate = useNavigate();
+
+  const renderRoutes = (routes) => {
+    return routes.map((route, key) => (
+      <React.Fragment key={key}>
+        {route.subRoutes ? (
+          // Renderizar el DropdownAndDropup solo si hay subrutas
+          <DropdownAndDropup
+            title={route.name}
+            options={renderRoutes(route.subRoutes)}
+          />
+        ) : (
+          // Renderizar solo la ruta si no hay subrutas
+          <Typography
+            onClick={() => navigate(route.path)}
+            key={key}
+            variant='body1'
+          >
+            {route.name}
+          </Typography>
+        )}
+      </React.Fragment>
+    ));
+  };
+
   return (
     <AppBar
       className={`${props.open ? classes.appBarShift : classes.appBar} ${
@@ -25,29 +51,18 @@ const CustomAppBar = ({ isPrivate, isPublic, routes, position, ...props }) => {
           >
             <Typography variant='h6'>Logo Privaasdsdte</Typography>
             <Hidden smDown>
-              {' '}
               <Grid>
-                {/* consumir rutas publicas publicNavigation con menu de material uiy al acencarnos
-                aparecera sus subrutas */}
                 <Grid
                   container
                   justifyContent='center'
                   alignItems='center'
                   flexDirection='row'
                   border={2}
+                  item
                 >
-                  <Grid item>
-                    {routes.map((prop, key) => (
-                      <Button onClick={() => navigate(prop.path)}>
-                        {prop.icon}
-                        {prop.name}
-
-                        {prop.link}
-                      </Button>
-                    ))}
-                  </Grid>
+                  {renderRoutes(routes)}
                 </Grid>
-              </Grid>{' '}
+              </Grid>
             </Hidden>
           </Grid>
         )}
@@ -60,12 +75,10 @@ const CustomAppBar = ({ isPrivate, isPublic, routes, position, ...props }) => {
           edge='start'
           className={`${
             props.open ? classes.extendButtonHidden : classes.menuButton
-          }
-         
-          `}
+          }`}
         >
           <MenuIcon />
-        </IconButton>{' '}
+        </IconButton>
         {isPrivate && <Typography variant='h6'>Logo Privaate</Typography>}
       </Toolbar>
     </AppBar>

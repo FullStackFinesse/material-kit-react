@@ -43,11 +43,11 @@ export const publicNavigation = [
     component: <SignIn />,
   },
   {
-    name: 'Collapse',
+    name: 'PADRE',
     icon: <WorkIcon />,
     subRoutes: [
       {
-        name: 'Subruta',
+        name: 'FANOR',
         icon: <WorkIcon />,
         path: '/login',
         exact: true,
@@ -55,7 +55,14 @@ export const publicNavigation = [
         component: <SignIn />,
       },
       {
-        name: 'Subruta',
+        name: 'MORTIMER',
+        icon: <WorkIcon />,
+        path: '/contact-us',
+        exact: true,
+        component: <ContactUs />,
+      },
+      {
+        name: 'STALIN',
         icon: <WorkIcon />,
         path: '/contact-us',
         exact: true,
