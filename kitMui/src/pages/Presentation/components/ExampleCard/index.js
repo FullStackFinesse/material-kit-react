@@ -1,31 +1,12 @@
-/*
-=========================================================
-* Material Kit 2 React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
 // @mui material components
 import Tooltip from "@mui/material/Tooltip";
-
-// Material Kit 2 React components
-import MKBox from "components/MKBox";
-import MKTypography from "components/MKTypography";
+import { Box, Typography } from "@mui/material";
 
 function ExampleCard({ image, name, count, pro, ...rest }) {
   const imageTemplate = (
-    <MKBox
+    <Box
       bgColor="white"
       borderRadius="xl"
       shadow="lg"
@@ -45,7 +26,7 @@ function ExampleCard({ image, name, count, pro, ...rest }) {
       {...rest}
     >
       {pro && (
-        <MKBox position="absolute" top={0} right={0} zIndex={2} p={1}>
+        <Box position="absolute" top={0} right={0} zIndex={2} p={1}>
           <svg
             width="24px"
             height="24px"
@@ -66,21 +47,14 @@ function ExampleCard({ image, name, count, pro, ...rest }) {
               </g>
             </g>
           </svg>
-        </MKBox>
+        </Box>
       )}
-      <MKBox
-        component="img"
-        src={image}
-        alt={name}
-        width="100%"
-        my="auto"
-        opacity={pro ? 0.6 : 1}
-      />
-    </MKBox>
+      <Box component="img" src={image} alt={name} width="100%" my="auto" opacity={pro ? 0.6 : 1} />
+    </Box>
   );
 
   return (
-    <MKBox position="relative">
+    <Box position="relative">
       {pro ? (
         <Tooltip title="Pro Element" placement="top">
           {imageTemplate}
@@ -89,20 +63,20 @@ function ExampleCard({ image, name, count, pro, ...rest }) {
         imageTemplate
       )}
       {name || count > 0 ? (
-        <MKBox mt={1} ml={1} lineHeight={1}>
+        <Box mt={1} ml={1} lineHeight={1}>
           {name && (
-            <MKTypography variant="h6" fontWeight="bold">
+            <Typography variant="h6" fontWeight="bold">
               {name}
-            </MKTypography>
+            </Typography>
           )}
           {count > 0 && (
-            <MKTypography variant="button" fontWeight="regular" color="secondary">
+            <Typography variant="button" fontWeight="regular" color="secondary">
               {count} {count === 1 ? "Example" : "Examples"}
-            </MKTypography>
+            </Typography>
           )}
-        </MKBox>
+        </Box>
       ) : null}
-    </MKBox>
+    </Box>
   );
 }
 
