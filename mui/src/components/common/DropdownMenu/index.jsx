@@ -50,9 +50,15 @@ const DropdownMenu = ({
             background: ({ palette: { white } }) => white.main,
           }}
         >
-          <MKBox borderRadius="lg">
+          <MKBox borderRadius="lg" className={classes.content}>
             <Icon className={classes.triangle} ref={setArrowRef}></Icon>
-            <MKBox shadow="lg" borderRadius="lg" p={2} mt={2}>
+            <MKBox
+              shadow="lg"
+              borderRadius="lg"
+              p={2}
+              mt={2}
+              className={classes.contentRoutes}
+            >
               {renderRoutes}
             </MKBox>
           </MKBox>

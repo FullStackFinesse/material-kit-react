@@ -238,12 +238,12 @@ function DefaultNavbar({
 // Setting default values for the props of DefaultNavbar
 DefaultNavbar.defaultProps = {
   brand: 'Material Kit 2',
-  transparent: false,
-  light: false,
-  action: false,
-  sticky: false,
-  relative: false,
-  center: false,
+  // transparent: false,
+  // light: false,
+  // action: false,
+  // sticky: false,
+  // relative: false,
+  // center: false,
 }
 
 export default DefaultNavbar

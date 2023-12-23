@@ -3,8 +3,6 @@ import { makeStyles } from '@mui/styles'
 export const useStyles = makeStyles((theme) => ({
   content: {
     border: '1px dashed orange',
-    borderRadius: '10px',
-    marginTop: '1rem',
   },
 
   icon: {
@@ -37,7 +35,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   contentRoutes: {
     border: '1px dashed red',
-    borderRadius: '10px',
+
     // boxShadow: ' 0px 0px 10px rgba(0,0,0,0.2)',
   },
 }))

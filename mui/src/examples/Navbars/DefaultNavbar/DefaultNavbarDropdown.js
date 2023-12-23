@@ -1,19 +1,3 @@
-/**
-=========================================================
-* Material Kit 2 React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// prop-types is a library for typechecking of props
 import PropTypes from 'prop-types'
 
 // react-router-dom components
@@ -26,7 +10,7 @@ import Icon from '@mui/material/Icon'
 // Material Kit 2 React components
 import MKBox from 'components/MKBox'
 import MKTypography from 'components/MKTypography'
-
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 function DefaultNavbarDropdown({
   name,
   icon,
@@ -60,7 +44,11 @@ function DefaultNavbarDropdown({
         alignItems="baseline"
         color={light ? 'white' : 'dark'}
         opacity={light ? 1 : 0.6}
-        sx={{ cursor: 'pointer', userSelect: 'none' }}
+        sx={{
+          cursor: 'pointer',
+          userSelect: 'none',
+          border: '1px solid orange',
+        }}
         {...(route && routeComponent)}
         {...(href && linkComponent)}
       >
@@ -68,7 +56,10 @@ function DefaultNavbarDropdown({
           variant="body2"
           lineHeight={1}
           color="inherit"
-          sx={{ alignSelf: 'center', '& *': { verticalAlign: 'middle' } }}
+          sx={{
+            alignSelf: 'center',
+            '& *': { verticalAlign: 'middle', border: '1px solid red' },
+          }}
         >
           {icon}
         </MKTypography>
@@ -85,9 +76,15 @@ function DefaultNavbarDropdown({
           variant="body2"
           color={light ? 'white' : 'dark'}
           ml="auto"
+          style={{ cursor: 'pointer', border: '1px solid red' }}
         >
-          <Icon sx={{ fontWeight: 'normal', verticalAlign: 'middle' }}>
-            {collapse && 'keyboard_arrow_down'}
+          <Icon
+            sx={{
+              fontWeight: 'normal',
+              verticalAlign: 'medium',
+            }}
+          >
+            {collapse && <KeyboardArrowDownIcon />}
           </Icon>
         </MKTypography>
       </MKBox>
