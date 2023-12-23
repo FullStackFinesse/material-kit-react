@@ -33,19 +33,20 @@ const NestedDropdownMenu = ({
       {({ TransitionProps }) => (
         <Grow
           {...TransitionProps}
-          // sx={{
-          //   transformOrigin: 'left top',
-          //   // background: ({ palette: { white } }) => white.main,
-          // }}
+          sx={{
+            transformOrigin: 'left top',
+            // backgroundColor: 'white',
+            background: ({ palette: { white } }) => white.main,
+          }}
         >
           <Box
             ml={2.5}
             mt={-2.5}
-            // borderRadius='lg'
+            borderRadius='lg'
           >
             <Box
               shadow='lg'
-              // borderRadius='lg'
+              borderRadius='lg'
               py={1.5}
               px={1}
               mt={2}

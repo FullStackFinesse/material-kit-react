@@ -28,11 +28,13 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 // import ProgressBars from 'layouts/sections/elements/progress-bars';
 // import Toggles from 'layouts/sections/elements/toggles';
 // import Typography from 'layouts/sections/elements/typography';
-
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import EventSeatIcon from '@mui/icons-material/EventSeat';
+import ListAltIcon from '@mui/icons-material/ListAlt';
 const routes = [
   {
     name: 'pages',
-    icon: <Icon>dashboard</Icon>,
+    icon: <DashboardIcon />,
     columns: 1,
     rowsPerColumn: 2,
     collapse: [
@@ -70,7 +72,7 @@ const routes = [
   },
   {
     name: 'sections',
-    icon: <Icon>view_day</Icon>,
+    icon: <EventSeatIcon />,
     collapse: [
       {
         name: 'page sections',
@@ -201,7 +203,7 @@ const routes = [
   },
   {
     name: 'docs',
-    icon: <Icon>article</Icon>,
+    icon: <ListAltIcon />,
     collapse: [
       {
         name: 'getting started',

@@ -5,11 +5,11 @@ import Icon from '@mui/material/Icon';
 import Box from '@mui/material/Box';
 import DefaultNavbarDropdown from './DefaultNavbarDropdown';
 import DefaultNavbarMobile from './DefaultNavbarMobile';
-
-import DropdownMenu from '../../common/DropdownMenu';
-import NestedDropdownMenu from '../../common/NestedDropdownMenu';
-import RenderRoutes from '../../common/RenderComponents/RenderRoutes';
-import RenderNestedRoutes from '../../common/RenderComponents/RenderNestedRoutes';
+import breakpoints from '../../../assets/theme/base/breakpoints';
+import DropdownMenu from '../../../components/common/DropdownMenu';
+import NestedDropdownMenu from '../../../components/common/NestedDropdownMenu';
+import RenderRoutes from '../../../components/common/RenderComponents/RenderRoutes';
+import RenderNestedRoutes from '../../../components/common/RenderComponents/RenderNestedRoutes';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 const DefaultNavbar = ({
@@ -36,7 +36,7 @@ const DefaultNavbar = ({
 
   useEffect(() => {
     function displayMobileNavbar() {
-      if (window.innerWidth < window.innerHeight) {
+      if (window.innerWidth < breakpoints.values.lg) {
         setMobileView(true);
         setMobileNavbar(false);
       } else {
@@ -123,19 +123,17 @@ const DefaultNavbar = ({
         shadow={transparent ? 'none' : 'md'}
         color={light ? 'white' : 'dark'}
         position={relative ? 'relative' : 'absolute'}
-        // style={{ color: "green", borderRadius: "50%" }}
         left={0}
         zIndex={3}
-        backgroundColor={light ? 'yellow' : 'dark'}
-        // sx={({
-        //   palette: { transparent: transparentColor, white },
-        //   functions: { rgba },
-        // }) => ({
-        //   backgroundColor: transparent
-        //     ? transparentColor.main
-        //     : rgba(white.main, 0.8),
-        //   backdropFilter: transparent ? 'none' : `saturate(200%) blur(30px)`,
-        // })}
+        sx={({
+          palette: { transparent: transparentColor, white },
+          functions: { rgba },
+        }) => ({
+          backgroundColor: transparent
+            ? transparentColor.main
+            : rgba(white.main, 0.8),
+          backdropFilter: transparent ? 'none' : `saturate(200%) blur(30px)`,
+        })}
       >
         <Box
           display='flex'
@@ -149,7 +147,8 @@ const DefaultNavbar = ({
           >
             <Typography
               variant='button'
-              style={{ color: 'yellow', fontWeight: 'bold' }}
+              color={light ? 'white' : 'dark'}
+              // style={{ color: 'white', fontWeight: 'bold' }}
             >
               {brand}
             </Typography>

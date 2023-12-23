@@ -93,7 +93,7 @@ const RenderRoutes = ({
 
                             '&:hover': {
                               backgroundColor: grey[200],
-                              // color: dark.main,
+                              color: dark.main,
                             },
                           })}
                         >
@@ -157,10 +157,10 @@ const RenderRoutes = ({
 
                 '&:hover': {
                   backgroundColor: grey[200],
-                  // color: dark.main,
+                  color: dark.main,
 
                   '& *': {
-                    // color: dark.main,
+                    color: dark.main,
                   },
                 },
               })}

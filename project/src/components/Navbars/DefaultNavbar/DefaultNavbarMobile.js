@@ -74,15 +74,15 @@ const DefaultNavbarMobile = ({ routes, open }) => {
                         px={2}
                         sx={({
                           palette: { grey, dark },
-                          // borders: { borderRadius },
+                          borders: { borderRadius },
                         }) => ({
-                          // borderRadius: borderRadius.md,
+                          borderRadius: borderRadius.md,
                           cursor: 'pointer',
                           transition: 'all 300ms linear',
 
                           '&:hover': {
                             backgroundColor: grey[200],
-                            // color: dark.main,
+                            color: dark.main,
                           },
                         })}
                       >
@@ -101,9 +101,9 @@ const DefaultNavbarMobile = ({ routes, open }) => {
                     rel={item.href ? 'noreferrer' : 'noreferrer'}
                     sx={({
                       palette: { grey, dark },
-                      // borders: { borderRadius },
+                      borders: { borderRadius },
                     }) => ({
-                      // borderRadius: borderRadius.md,
+                      borderRadius: borderRadius.md,
                       cursor: 'pointer',
                       transition: 'all 300ms linear',
                       py: 1,
@@ -111,10 +111,10 @@ const DefaultNavbarMobile = ({ routes, open }) => {
 
                       '&:hover': {
                         backgroundColor: 'red',
-                        // color: dark.main,
+                        color: dark.main,
 
                         '& *': {
-                          // color: dark.main,
+                          color: dark.main,
                         },
                       },
                     })}

@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import Collapse from "@mui/material/Collapse";
-import Icon from "@mui/material/Icon";
-import { Box, Typography } from "@mui/material";
+import { Link } from 'react-router-dom';
+import Collapse from '@mui/material/Collapse';
+import Icon from '@mui/material/Icon';
+import { Box, Typography } from '@mui/material';
 
 const DefaultNavbarDropdown = ({
   name,
@@ -15,10 +15,10 @@ const DefaultNavbarDropdown = ({
   ...rest
 }) => {
   const linkComponent = {
-    component: "a",
+    component: 'a',
     href,
-    target: "_blank",
-    rel: "noreferrer",
+    target: '_blank',
+    rel: 'noreferrer',
   };
 
   const routeComponent = {
@@ -32,39 +32,49 @@ const DefaultNavbarDropdown = ({
         {...rest}
         mx={1}
         p={1}
-        display="flex"
-        alignItems="baseline"
-        color={light ? "greenYellow" : "dark"}
+        display='flex'
+        alignItems='baseline'
+        color={light ? 'white' : 'dark'}
         opacity={light ? 1 : 0.6}
-        sx={{ cursor: "pointer", userSelect: "none", border: "1px dashed red" }}
+        sx={{ cursor: 'pointer', userSelect: 'none', border: '1px dashed red' }}
         {...(route && routeComponent)}
         {...(href && linkComponent)}
       >
         <Typography
-          variant="body2"
+          variant='body2'
           lineHeight={1}
-          color="inherit"
-          sx={{ alignSelf: "center", "& *": { verticalAlign: "middle" } }}
+          color='inherit'
+          sx={{ alignSelf: 'center', '& *': { verticalAlign: 'middle' } }}
         >
           {icon}
         </Typography>
         <Typography
-          variant="button"
-          fontWeight="regular"
-          textTransform="capitalize"
-          color={light ? "white" : "dark"}
-          sx={{ fontWeight: "100%", ml: 1, mr: 0.25 }}
+          variant='button'
+          fontWeight='regular'
+          textTransform='capitalize'
+          color={light ? 'white' : 'dark'}
+          sx={{ fontWeight: '100%', ml: 1, mr: 0.25 }}
         >
           {name}
         </Typography>
-        <Typography variant="body2" color={light ? "yellow" : "dark"} ml="auto">
-          <Icon sx={{ fontWeight: "normal", verticalAlign: "middle", color: "red" }}>
-            {collapse && "keyboard_arrow_down"}
+        <Typography
+          variant='body2'
+          color={light ? 'white' : 'dark'}
+          ml='auto'
+        >
+          <Icon
+            sx={{ fontWeight: 'normal', verticalAlign: 'middle', color: 'red' }}
+          >
+            {collapse && 'keyboard_arrow_down'}
           </Icon>
         </Typography>
       </Box>
       {children && (
-        <Collapse in={Boolean(collapseStatus)} timeout={400} unmountOnExit>
+        <Collapse
+          in={Boolean(collapseStatus)}
+          timeout={400}
+          unmountOnExit
+        >
           {children}
         </Collapse>
       )}

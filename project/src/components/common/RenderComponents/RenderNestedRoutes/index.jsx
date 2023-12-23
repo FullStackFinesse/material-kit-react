@@ -45,18 +45,18 @@ const RenderNestedRoutes = ({ routes, nestedDropdownName }) => (
                       px={2}
                       sx={({
                         palette: { grey, dark },
-                        // borders: { borderRadius },
+                        borders: { borderRadius },
                       }) => ({
-                        // borderRadius: borderRadius.md,
+                        borderRadius: borderRadius.md,
                         cursor: 'pointer',
                         transition: 'all 300ms linear',
 
                         '&:hover': {
                           backgroundColor: grey[200],
-                          // color: dark.main,
+                          color: 'black',
 
                           '& *': {
-                            // color: dark.main,
+                            color: dark.main,
                           },
                         },
                       })}
