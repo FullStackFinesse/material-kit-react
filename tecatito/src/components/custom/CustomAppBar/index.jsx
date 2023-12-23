@@ -21,7 +21,7 @@ const CustomAppBar = ({ isPrivate, isPublic, routes, position, ...props }) => {
           <DropdownAndDropup
             title={route.name}
             options={renderRoutes(route.subRoutes)}
-            className={classes.itemLink}
+            className={classes.dropdown}
           />
         ) : (
           // Renderizar solo la ruta si no hay subrutas
@@ -30,6 +30,7 @@ const CustomAppBar = ({ isPrivate, isPublic, routes, position, ...props }) => {
             onClick={() => navigate(route.path)}
             key={key}
             variant='body1'
+            style={{ textDecoration: 'none', marginLeft: '10px' }}
           >
             {route.name}
           </Typography>
@@ -56,12 +57,7 @@ const CustomAppBar = ({ isPrivate, isPublic, routes, position, ...props }) => {
               <Grid className={classes.navLink}>
                 <Grid
                   container
-                  justifyContent='center'
-                  alignItems='center'
-                  flexDirection='row'
-                  backgroundColor=''
-                  border={2}
-                  item
+                  className={classes.itemLink}
                 >
                   {renderRoutes(routes)}
                 </Grid>

@@ -70,6 +70,34 @@ export const publicNavigation = [
       },
     ],
   },
+  {
+    name: 'Collapse2',
+    icon: <WorkIcon />,
+    subRoutes: [
+      {
+        name: 'FANOR',
+        icon: <WorkIcon />,
+        path: '/login',
+        exact: true,
+
+        component: <SignIn />,
+      },
+      {
+        name: 'MORTIMER',
+        icon: <WorkIcon />,
+        path: '/contact-us',
+        exact: true,
+        component: <ContactUs />,
+      },
+      {
+        name: 'STALIN',
+        icon: <WorkIcon />,
+        path: '/contact-us',
+        exact: true,
+        component: <ContactUs />,
+      },
+    ],
+  },
 ];
 
 export const privateNavigation = [

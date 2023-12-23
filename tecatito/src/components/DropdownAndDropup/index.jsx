@@ -27,6 +27,7 @@ const DropdownAndDropup = ({ title, options, customStyles, className }) => {
 
   return (
     <div
+      onClick={handleClose}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleClose}
       className={`${classes.root} ${className}`}
@@ -46,7 +47,6 @@ const DropdownAndDropup = ({ title, options, customStyles, className }) => {
       <Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
-        onClose={handleClose}
         onMouseLeave={handleClose}
         getContentAnchorEl={null}
         anchorOrigin={{

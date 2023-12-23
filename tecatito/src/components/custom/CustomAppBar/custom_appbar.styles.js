@@ -74,13 +74,26 @@ export const useStyles = makeStyles((theme) => ({
       //  border: '1px solid blue',
     },
   },
+  dropdown: {
+    marginLeft: theme.spacing(1),
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
+    border: `0.0625rem solid ${theme.palette.primary.contrastText}`,
+  },
   navLink: {
     textDecoration: 'none',
+    display: 'flex',
+    padding: theme.spacing(1),
+
+    backgroundColor: theme.palette.primary.main,
     color: theme.palette.primary.contrastText,
     border: `0.0625rem solid ${theme.palette.primary.contrastText}`,
   },
   itemLink: {
-    padding: theme.spacing(0, 1),
+    justifyContent: 'center',
+    alignItems: 'center',
+    border: `0.0625rem solid ${theme.palette.primary.contrastText}`,
+    padding: theme.spacing(1),
     border: `0.0625rem solid ${theme.palette.primary.contrastText}`,
   },
 }));
