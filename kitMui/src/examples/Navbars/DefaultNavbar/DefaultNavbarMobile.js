@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import Collapse from "@mui/material/Collapse";
 import MuiLink from "@mui/material/Link";
 import DefaultNavbarDropdown from "examples/Navbars/DefaultNavbar/DefaultNavbarDropdown";
 import { Box, Typography } from "@mui/material";
 
-function DefaultNavbarMobile({ routes, open }) {
+const DefaultNavbarMobile = ({ routes, open }) => {
   const [collapse, setCollapse] = useState(null);
 
   const handleSetCollapse = (name) => (collapse === name ? setCollapse(false) : setCollapse(name));
@@ -136,6 +135,6 @@ function DefaultNavbarMobile({ routes, open }) {
       </Box>
     </Collapse>
   );
-}
+};
 
 export default DefaultNavbarMobile;

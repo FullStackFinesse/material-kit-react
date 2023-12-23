@@ -1,12 +1,12 @@
 // DropdownMenu.js
-import React, { useState } from "react";
-import Popper from "@mui/material/Popper";
-import Grow from "@mui/material/Grow";
-import Icon from "@mui/material/Icon";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import React, { useState } from 'react';
+import Popper from '@mui/material/Popper';
+import Grow from '@mui/material/Grow';
+import Icon from '@mui/material/Icon';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
-import { useStyles } from "./dropdownMenuStyles";
+import { useStyles } from './dropdownMenuStyles';
 const DropdownMenu = ({
   dropdown,
   dropdownEl,
@@ -41,7 +41,7 @@ const DropdownMenu = ({
       style={{ zIndex: 10 }}
       modifiers={[
         {
-          name: "arrow",
+          name: 'arrow',
           enabled: true,
           options: {
             element: arrowRef,
@@ -52,7 +52,7 @@ const DropdownMenu = ({
       onMouseLeave={() => {
         if (!nestedDropdown) {
           setDropdown(null);
-          setDropdownName("");
+          setDropdownName('');
         }
       }}
     >
@@ -60,7 +60,7 @@ const DropdownMenu = ({
         <Grow
           {...TransitionProps}
           sx={{
-            transformOrigin: "left top",
+            transformOrigin: 'left top',
             background: ({ palette: { white } }) => white.main,
           }}
         >

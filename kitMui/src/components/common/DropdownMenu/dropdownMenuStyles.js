@@ -11,9 +11,9 @@ export const useStyles = makeStyles((theme) => ({
     // border: "1px dashed blue",
     marginTop: "-1.5rem",
   },
-  contentRoutes:{
+  contentRoutes: {
     border: "1px dashed red",
     borderRadius: "10px",
-boxShadow:" 0px 0px 10px rgba(0,0,0,0.2)"
-  }
+    boxShadow: " 0px 0px 10px rgba(0,0,0,0.2)",
+  },
 }));
