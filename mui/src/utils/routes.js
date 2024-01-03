@@ -28,6 +28,8 @@ import Dropdowns from 'layouts/sections/elements/dropdowns'
 import ProgressBars from 'layouts/sections/elements/progress-bars'
 import Toggles from 'layouts/sections/elements/toggles'
 import Typography from 'layouts/sections/elements/typography'
+
+//icon
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import EventSeatIcon from '@mui/icons-material/EventSeat'
 import ListAltIcon from '@mui/icons-material/ListAlt'
@@ -244,6 +246,11 @@ const routes = [
     icon: <GitHubIcon />,
     href: 'https://www.github.com/creativetimofficial/material-kit-react',
   },
+  // {
+  //   name: 'Iniciar Sesión',
+  //          component: <SignIn />,
+  //   href: 'https://www.github.com/creativetimofficial/material-kit-react',
+  // },
 ]
 
 export default routes

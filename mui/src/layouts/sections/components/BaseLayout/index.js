@@ -1,19 +1,3 @@
-/*
-=========================================================
-* Material Kit 2 React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// prop-types is a library for typechecking of props
 import PropTypes from 'prop-types'
 
 // @mui material components
@@ -30,7 +14,7 @@ import CenteredFooter from 'examples/Footers/CenteredFooter'
 import Breadcrumbs from 'examples/Breadcrumbs'
 
 // Routes
-import routes from 'routes'
+import routes from 'utils/routes'
 
 function BaseLayout({ breadcrumb, title, children }) {
   return (

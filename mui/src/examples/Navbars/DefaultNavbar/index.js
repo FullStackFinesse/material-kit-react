@@ -12,6 +12,7 @@ import DropdownMenu from 'components/common/DropdownMenu'
 import RenderRoutes from 'components/common/RenderComponents/RenderRoutes'
 import RenderNestedRoutes from 'components/common/RenderComponents/RenderNestedRoutes'
 import NestedDropdownMenu from 'components/common/NestedDropdownMenu'
+import { Box } from '@mui/system'
 
 function DefaultNavbar({
   brand,
@@ -22,6 +23,7 @@ function DefaultNavbar({
   sticky,
   relative,
   center,
+  isPublic,
 }) {
   const [dropdown, setDropdown] = useState('')
   const [dropdownEl, setDropdownEl] = useState('')
@@ -121,7 +123,7 @@ function DefaultNavbar({
   )
 
   return (
-    <Container sx={sticky ? { position: 'sticky', top: 0, zIndex: 10 } : null}>
+    <>
       <MKBox
         py={1}
         px={{ xs: 4, sm: transparent ? 2 : 3, lg: transparent ? 0 : 2 }}
@@ -143,34 +145,40 @@ function DefaultNavbar({
             : rgba(white.main, 0.8),
           backdropFilter: transparent ? 'none' : `saturate(200%) blur(30px)`,
         })}
+        border={light ? '1px solid' : 'none'}
       >
         <MKBox
           display="flex"
           justifyContent="space-between"
           alignItems="center"
+          // borderBottom={light ? '1px solid orange' : 'none'}
         >
-          <MKBox
-            component={Link}
-            to="/"
-            lineHeight={1}
-            py={transparent ? 1.5 : 0.75}
-            pl={relative || transparent ? 0 : { xs: 0, lg: 1 }}
-          >
-            <MKTypography
-              variant="button"
-              fontWeight="bold"
-              color={light ? 'white' : 'dark'}
+          {isPublic && (
+            <MKBox
+              component={Link}
+              to="/"
+              lineHeight={1}
+              py={transparent ? 1.5 : 0.75}
+              pl={relative || transparent ? 0 : { xs: 0, lg: 1 }}
             >
-              {brand}
-            </MKTypography>
-          </MKBox>
-          <MKBox
-            color="inherit"
-            display={{ xs: 'none', lg: 'flex' }}
-            ml="auto"
-            mr={center ? 'auto' : 0}
-          >
-            {renderNavbarItems}
+              <MKTypography
+                variant="button"
+                fontWeight="bold"
+                color={light ? 'white' : 'dark'}
+              >
+                {brand}
+              </MKTypography>
+            </MKBox>
+          )}
+          <MKBox display={{ xs: 'none', lg: 'flex' }}>
+            <MKBox
+              color="inherit"
+              display={{ xs: 'none', lg: 'flex' }}
+              ml="auto"
+              mr={center ? 'auto' : 0}
+            >
+              {renderNavbarItems}
+            </MKBox>
           </MKBox>
           <MKBox ml={{ xs: 'auto', lg: 0 }}>
             {action &&
@@ -231,13 +239,13 @@ function DefaultNavbar({
       </MKBox>
       {dropdownMenu}
       {nestedDropdownMenu}
-    </Container>
+    </>
   )
 }
 
 // Setting default values for the props of DefaultNavbar
 DefaultNavbar.defaultProps = {
-  brand: 'Material Kit 2',
+  brand: 'INIAF 2024',
   // transparent: false,
   // light: false,
   // action: false,

@@ -1,18 +1,3 @@
-/**
-=========================================================
-* Material Kit 2 React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 import { useState } from 'react'
 
 // react-router-dom components
@@ -40,10 +25,11 @@ import DefaultNavbar from 'examples/Navbars/DefaultNavbar'
 import SimpleFooter from 'examples/Footers/SimpleFooter'
 
 // Material Kit 2 React page layout routes
-import routes from 'routes'
+import routes from 'utils/routes'
 
 // Images
 import bgImage from 'assets/images/bg-sign-in-basic.jpeg'
+import { Button } from '@mui/material'
 
 function SignInBasic() {
   const [rememberMe, setRememberMe] = useState(false)
@@ -182,9 +168,9 @@ function SignInBasic() {
                     </MKTypography>
                   </MKBox>
                   <MKBox mt={4} mb={1}>
-                    <MKButton variant="gradient" color="info" fullWidth>
+                    <Button variant="contained" color="text" fullWidth>
                       sign in
-                    </MKButton>
+                    </Button>
                   </MKBox>
                   <MKBox mt={3} mb={1} textAlign="center">
                     <MKTypography variant="button" color="text">
